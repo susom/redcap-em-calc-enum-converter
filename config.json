@@ -1,0 +1,48 @@
+{
+  "name": "Calc Enum Converter",
+  "namespace": "Stanford\\CalcEnumConverter",
+  "description": "Copy calc value into Enum list.",
+  "authors": [
+    {
+      "name": "Ihab Zeedia",
+      "email": "ihabz@stanford.edu",
+      "institution": "Stanford University"
+    },
+    {
+      "name": "Andy Martin",
+      "email": "andy123@stanford.edu",
+      "institution": "Stanford University"
+    }
+  ],
+  "permissions": [
+    "redcap_save_record"
+  ],
+  "project-settings": [
+    {
+      "key": "instructions",
+      "name": "<h5>For each instance select specify the Calc and Enum fields</h5>",
+      "type": "descriptive"
+    },
+    {
+      "key": "instance",
+      "name": "<b>Calc-Enum Instance</b>",
+      "required": false,
+      "type": "sub_settings",
+      "repeatable": true,
+      "sub_settings": [
+        {
+          "key": "calc-field",
+          "name": "<b>Select Calc Field</b><br>",
+          "required": true,
+          "type": "field-list"
+        },
+        {
+          "key": "enum-field",
+          "name": "<b>Select Enum Field</b><br>",
+          "required": true,
+          "type": "field-list"
+        }
+      ]
+    }
+  ]
+}
