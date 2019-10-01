@@ -5,6 +5,7 @@ namespace Stanford\CalcEnumConverter;
 
 define("CALC_FIELD", "calc-field");
 define("ENUM_FIELD", "enum-field");
+define("ENUM_EVENT", "enum-event");
 
 /**
  * Class CalcEnumConverter
@@ -153,8 +154,12 @@ class CalcEnumConverter extends \ExternalModules\AbstractExternalModule
         $this->setFields();
 
         foreach ($this->getInstances() as $instance) {
-            if (in_array($instance[CALC_FIELD], $this->getFields()) && in_array($instance[ENUM_FIELD],
-                    $this->getFields())) {
+            if (in_array($instance[CALC_FIELD], $this->getFields())) {
+                //in case event name is specified for enum use it else use passed event.
+                if ($instance[ENUM_EVENT] != '') {
+                    $data['redcap_event_name'] = \REDCap::getEventNames(true, true, $instance[ENUM_EVENT]);
+                }
+
                 $calcValue = filter_var($_POST[$instance[CALC_FIELD]], FILTER_SANITIZE_STRING);
                 if ($this->isCalcValueExistInEnumList($instance[ENUM_FIELD], $calcValue)) {
                     $data[$instance[ENUM_FIELD]] = $calcValue;

@@ -37,6 +37,12 @@
           "type": "field-list"
         },
         {
+          "key": "enum-event",
+          "name": "<b>Select ENUM event(if black calculated field event will be used)</b><br>",
+          "required": false,
+          "type": "event-list"
+        },
+        {
           "key": "enum-field",
           "name": "<b>Select Enum Field</b><br>",
           "required": true,
